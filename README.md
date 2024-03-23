@@ -20,4 +20,4 @@ To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the fo
 
 
 
-`[@nickjames.co.ke](https://nickjames.co.ke)`
+[@nickjames.co.ke](https://nickjames.co.ke)
