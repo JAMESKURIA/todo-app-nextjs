@@ -5,11 +5,13 @@ import { type z } from "zod";
 import { type todoInput } from "~/server/api/routers/todos";
 import { api } from "~/utils/api";
 
+import { ActionIcon, Box } from "@mantine/core";
 import { modals } from "@mantine/modals";
+import { IconEdit, IconTrash } from "@tabler/icons-react";
 
 import { notifications } from "@mantine/notifications";
 
-import { Button, Menu, Select, Text } from "@mantine/core";
+import { Button, Select, Text } from "@mantine/core";
 
 import {
   MantineReactTable,
@@ -107,15 +109,28 @@ export default function Home() {
       isLoading: tasks.isLoading,
     },
     enableRowActions: true,
-    renderRowActionMenuItems: ({ row }) => (
-      <>
-        <Menu.Item onClick={() => openModal(row.original.id!)}>
-          <Button className="w-20">Edit</Button>
-        </Menu.Item>
-        <Menu.Item onClick={() => openDeleteModal(row.original.id!)}>
-          <Button className="w-20 bg-red-500 hover:bg-red-600">Delete</Button>
-        </Menu.Item>
-      </>
+    // renderRowActionMenuItems: ({ row }) => (
+    //   <>
+    //     <Menu.Item onClick={() => openModal(row.original.id!)}>
+    //       <Button className="w-20">Edit</Button>
+    //     </Menu.Item>
+    //     <Menu.Item onClick={() => openDeleteModal(row.original.id!)}>
+    //       <Button className="w-20 bg-red-500 hover:bg-red-600">Delete</Button>
+    //     </Menu.Item>
+    //   </>
+    // ),
+    renderRowActions: ({ row }) => (
+      <Box style={{ display: "flex", flexWrap: "nowrap", gap: "8px" }}>
+        <ActionIcon color="blue" onClick={() => openModal(row.original.id!)}>
+          <IconEdit />
+        </ActionIcon>
+        <ActionIcon
+          color="red"
+          onClick={() => openDeleteModal(row.original.id!)}
+        >
+          <IconTrash />
+        </ActionIcon>
+      </Box>
     ),
   });
 
